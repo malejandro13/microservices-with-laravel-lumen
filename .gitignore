@@ -1,0 +1,7 @@
+.DS_Store
+AuthorApi/vendor
+AuthorApi/.idea
+AuthorApi/Homestead.json
+AuthorApi/Homestead.yaml
+AuthorApi/.env
+AuthorApi/.phpunit.result.cache

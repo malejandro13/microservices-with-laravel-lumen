@@ -1,0 +1,23 @@
+version: '3.7'
+services: 
+  authorDb:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: authorDb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: authordb
+      MYSQL_USER: malejandro13
+      MYSQL_PASSWORD: secret
+    ports:
+      - 3307:3306
+  authorApi:
+    image: malejandro13/nginx-php73-dev:latest
+    container_name: authorApi
+    volumes:
+      - ./AuthorApi:/var/www/html
+    ports:
+      - 8001:80
+    depends_on:
+      - authorDb
