@@ -12,6 +12,18 @@ services:
       MYSQL_PASSWORD: secret
     ports:
       - 3307:3306
+  bookDb:
+    image: mysql:latest
+    command: --default-authentication-plugin=mysql_native_password
+    container_name: bookDb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: bookdb
+      MYSQL_USER: malejandro13
+      MYSQL_PASSWORD: secret
+    ports:
+      - 3308:3306
   authorApi:
     image: malejandro13/nginx-php73-dev:latest
     container_name: authorApi
@@ -21,3 +33,12 @@ services:
       - 8001:80
     depends_on:
       - authorDb
+  bookApi:
+    image: malejandro13/nginx-php73-dev:latest
+    container_name: bookApi
+    volumes:
+      - ./BookApi:/var/www/html
+    ports:
+      - 8002:80
+    depends_on:
+      - bookDb
