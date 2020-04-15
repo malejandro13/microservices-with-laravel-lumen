@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Traits\ApiResponse;
-
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Traits\ApiResponse;
 use App\Repositories\Contracts\BookInterface;
 
 class BookController extends Controller
