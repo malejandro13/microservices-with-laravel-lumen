@@ -27,10 +27,6 @@ $app->withFacades();
 
 $app->withEloquent();
 
-$app = new \Dusterio\LumenPassport\Lumen7Application(
-    dirname(__DIR__)
-);
-
 /*
 |--------------------------------------------------------------------------
 | Register Container Bindings
@@ -85,8 +81,7 @@ $app->configure('auth');
 // ]);
 
 $app->routeMiddleware([
-    //'auth' => App\Http\Middleware\Authenticate::class,
-    'client.credentials' => Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
+    'auth' => App\Http\Middleware\Authenticate::class,
 ]);
 
 /*
